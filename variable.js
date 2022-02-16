@@ -15,6 +15,8 @@ function calculate(command, a, b){
             return a/b;
         case "%":
             return a%b;
+        default : 
+            return '해당하는 연산이 존재하지 않습니다.'
     }
 
 }
