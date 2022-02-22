@@ -1,0 +1,71 @@
+.TodoListItem {
+    padding: 1rem;
+    display: flex;
+    align-items: center; // 세로 중앙 정렬
+    &:nth-child(even) {
+        //가상선택자
+        //부모 안에 모든 요소 중 N번째 요소
+        //even === 짝수, 외에도 4의 배수마다를 원하면 4n
+      background: #f8f9fa;
+    }
+    .checkbox {
+      cursor: pointer;
+      flex: 1; // 차지할 수 있는 영역 모두 차지
+      display: flex;
+      align-items: center; // 세로 중앙 정렬
+      svg {
+        // 아이콘
+        font-size: 1.5rem;
+      }
+      .text {
+        margin-left: 0.5rem;
+        flex: 1; // 차지할 수 있는 영역 모두 차지
+      }
+      // 체크되었을 때 보여줄 스타일
+      &.checked {
+        svg {
+          color: #22b8cf;
+        }
+        .text {
+          color: #adb5bd;
+          text-decoration: line-through;
+        }
+      }
+    }
+    .remove {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      color: #ff6b6b;
+      cursor: pointer;
+      &:hover {
+        color: #ff8787;
+      }
+    }
+  
+    // 엘리먼트 사이사이에 테두리를 넣어줌
+    & + & {
+        //+인접 선택자로 앞의 요소 바로 뒤에 있는 요소만 선택
+      border-top: 1px solid #dee2e6;
+    }
+  }
+
+  //X Y와 X > Y의 차이점
+  // 후자가 직계 자식만을 선택
+  // ex. <div> <ul>  <li/><li/><li/></ul></div>
+  // 인 경우 ul만 해당됨
+
+  //X~Y : X 태그 아래 있는 모든 Y 요소 선택
+
+
+  //X[href*="nettuts"] : "" 안의 값을 해당하는 모든 href 태그
+
+//   X[href$=".jpg"] : ""로 끝나는 링크가 걸린 a 태그 전체를 찾음
+
+//   X:checked : 체크되는 사용자 인터페이스 요소를 대상으로 사용
+
+//   X:not(선택자) : 태그 중 특정 아이디, 클래스명을 제외하고 찾고 싶은 경우
+
+//   X:nth-last-child(n) : 끝에서 특정 항목만 찾고자 하는 경우
+
+//   X:nth-of-type(n) : 타입을 선택해야 할 경우
