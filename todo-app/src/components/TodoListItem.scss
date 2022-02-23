@@ -2,12 +2,12 @@
     padding: 1rem;
     display: flex;
     align-items: center; // 세로 중앙 정렬
-    &:nth-child(even) {
-        //가상선택자
-        //부모 안에 모든 요소 중 N번째 요소
-        //even === 짝수, 외에도 4의 배수마다를 원하면 4n
-      background: #f8f9fa;
-    }
+    // &:nth-child(even) {
+    //     //가상선택자
+    //     //부모 안에 모든 요소 중 N번째 요소
+    //     //even === 짝수, 외에도 4의 배수마다를 원하면 4n
+    //   background: #f8f9fa;
+    // }
     .checkbox {
       cursor: pointer;
       flex: 1; // 차지할 수 있는 영역 모두 차지
@@ -44,9 +44,14 @@
     }
   
     // 엘리먼트 사이사이에 테두리를 넣어줌
-    & + & {
+    .TodoListItem-virtualized {
+      & + & {
         //+인접 선택자로 앞의 요소 바로 뒤에 있는 요소만 선택
       border-top: 1px solid #dee2e6;
+    }
+      &:nth-child(even){
+        background: #f8f9fa;
+      }
     }
   }
 
