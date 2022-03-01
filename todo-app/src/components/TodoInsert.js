@@ -1,12 +1,12 @@
 import { MdAdd } from 'react-icons/md';
 // import AddImg from 'C:/Users/gmlfl/JavaScript/todo-app/src/img/4879897_add_new_plus_icon.svg';
 // import { ReactComponent as AddImg } from 'C:/Users/gmlfl/JavaScript/todo-app/src/img/4879897_add_new_plus_icon.svg';
+import {ReactComponent as AddImg} from 'C:/Users/gmlfl/JavaScript/todo-app/src/img/134224_add_plus_new_icon.svg'
 import './TodoInsert.scss';
 import { useState, useCallback } from 'react';
 
 // 함수를 재사용하기 위함
 const TodoInsert = ({onInsert}) => {
-
 
     // 인풋값을 추적하기 위한 값
     const [value, setValue] = useState('');
@@ -30,9 +30,9 @@ const TodoInsert = ({onInsert}) => {
             value = {value}
             onChange={onChange}/>
             <button type='submit'>
-                <MdAdd/>
+                {/* <MdAdd/> */}
                 {/* <img src={AddImg}/> */}
-                {/* <AddImg/> */}
+                <AddImg height = '20' width = '20' color = "#FFFFFF"/>
             </button>
         </form>
     );

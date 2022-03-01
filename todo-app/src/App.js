@@ -1,7 +1,7 @@
 import TodoTemplate from './components/TodoTemplate';
 import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
-import { useCallback, useState, useRef } from 'react';
+import {useReducer, useCallback, useState, useRef } from 'react';
 
 
 function createBulkTodos() {
@@ -15,8 +15,43 @@ function createBulkTodos() {
   }
   return array;
 }
+
+function todoReducer(todos, action){
+  switch(action.type){
+    case 'INSERT':
+      return todos.concat(action.todo);
+    case 'REMOVE' :
+      return todos.filter(todo => todo.id !== action.id);
+    case 'TOGGLE' :
+      return todos.map(todo =>
+        todo.id === action.id ? {...todo, checked:!todo.checked} : todo,
+        );
+    default : 
+        return todos;
+  }
+}
 // props로 전달해야할 함수를 만들 경우  컴포넌트의 성능을 아끼도록 useCallback을 사용해 감싸는 것을 습관화
 const App = () => {
+  const [todos, dispatch] = useReducer(todoReducer, undefined, createBulkTodos);
+
+  const nextId = useRef(2501);
+
+  const onInsert = useCallback(text => {
+    const todo = {
+      id : nextId.current,
+      text,
+      checked : false,
+    };
+    dispatch({type:'INSERT', todo});
+  }, []);
+
+  const onRemove = useCallback(id => {
+    dispatch({type:'REMOVE', id});
+  }, []);
+
+  const onToggle = useCallback(id => {
+    dispatch({type : 'TOGGLE', id});
+  }, []);
   // const [todos, setTodos] = useState([
   //   {
   //     id : 1, 
@@ -35,7 +70,9 @@ const App = () => {
   //   },
   // ]);
 
-  const [todos, setTodos] = useState(createBulkTodos);
+
+  //useState의 함수형 업데이트
+  /*const [todos, setTodos] = useState(createBulkTodos);
   const nextId = useRef(2501);
   // id 값이 렌더링 되지 않기 때문에  ref 를 사용해 변수 생성
 
@@ -73,8 +110,9 @@ const App = () => {
         ),
       );
     },
-    [todos],
+    [],
   );
+  */
   return (
     <TodoTemplate>
       <TodoInsert onInsert={onInsert}/>
