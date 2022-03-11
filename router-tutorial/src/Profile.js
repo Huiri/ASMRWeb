@@ -25,7 +25,7 @@ const Profile = ({match}) => {
                 {username} ({profile.name})
             </h3>
             <p>{profile.description}</p>
-            {/* <WithRouterSample/> */}
+            <WithRouterSample/>
         </div>
     );
 };
