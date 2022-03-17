@@ -1,0 +1,19 @@
+{
+    "users" : [
+        {
+            "id" : "chaz",
+            "password" : "1234",
+            "name" : "무우너"
+        },
+        {
+            "id" : "octopus",
+            "password" : "1234",
+            "name" : "무우너대갈"
+        },
+        {
+            "id" : "admin@admin/com",
+            "password" : "1234",
+            "name" : "관리자"
+        }
+    ]
+}
