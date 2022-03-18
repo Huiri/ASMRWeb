@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "yeongdo";
+    src : url("./fonts/Yeongdo.ttf")
+}
+@font-face {
+    font-family: "bold";
+    src : url("./fonts/GangwonEveryoneBold.ttf")
+}
+@font-face {
+    font-family: "light";
+    src : url("./fonts/GangwonEveryoneLight.ttf")
+}
