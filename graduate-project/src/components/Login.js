@@ -1,6 +1,6 @@
-import {React, useState, useReducer} from 'react';
+import {React, useState, useReducer, useCallback} from 'react';
 import styled from 'styled-components'
-import {Route, Redirect} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import { signIn } from '../auth';
 
 const Button = styled.button`
@@ -9,38 +9,90 @@ const Button = styled.button`
     display : flex;
     font-size: 1rem;
 `
+// const inputs = {
+//     name : '',
+//     inputId : '',
+//     inputPw : ''
+// }
+
+const initialState = {
+    inputs: {
+      name: '',
+      inputId: '',
+      inputPw : ''
+    },
+    users: [
+      {
+        inputId: "chaz",
+        name: '무니리',
+        inputPw: '123'
+      },
+      {
+        inputId: "happy",
+        name: '전해피',
+        inputPw: '123'
+      },
+      {
+        inputId: "day",
+        name: '문데이',
+        inputPw: '123'
+      }
+    ]
+  };
+  
 function reducer(state, action) {
-    /* switch(action.type){
-       case "INPUT" :*/
+    switch(action.type){
+       case "INPUT" :
         return{
             ...state,
-            [action.name] : action.value
+            inputs : {
+                ...state.inputs,
+                [action.name] : action.value
+            }
         }
-        /*case "RESET" :
-            return "";
+        case "RESET" :
+            return {
+                ...state,
+                input : {
+                    ...state.inputs,
+
+                }
+            };
         default :
         throw new Error("Unsupported action type:", action.type);
-    }*/
+    }
 
 }
 const Login = () => {
     const [user, setUser] = useState(null);
     const authenticated = user != null;
     
-    const [state, dispatch] = useReducer(reducer, {
-        inputId : '',
-        inputPw : ''
-    });
+    // const [state, dispatch] = useReducer(reducer, {
+    //     inputId : '',
+    //     inputPw : ''
+    // });
+
+    const [state, dispatch] = useReducer(reducer,initialState);
+    // const { users } = state;
+    // const { username, email } = state.inputs;
 
     const login = ({inputId, inputPw}) => setUser(signIn({inputId, inputPw}));
     const logout = () => setUser(null);
 
     const {inputId, inputPw} = state;
     
-    const onChange = e => {
-        dispatch( e.target);
+    // const onChange = e => {
+    //     dispatch(e.target);
 
-    }
+    // }
+    const onChange = useCallback(e => {
+        const {inputId, inputPw} = e.target;
+        dispatch({
+            type : "INPUT",
+            inputId,
+            inputPw
+        });
+    }, [])
     const hadleClick = () => {
         try {
             login({inputId, inputPw});

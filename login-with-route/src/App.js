@@ -22,15 +22,15 @@ function App() {
       <BrowserRouter>
         <header>
           <Link to = "/">
-            <button>Home</button>
+            <h2>Home</h2>
           </Link>
           <Link to ="/about">
-            <button>About</button>
+            <h4>About</h4>
           </Link>
           {authenticated ? (<LogoutButton logout = {logout} />
           ) : (
             <Link to="/login">
-              <button>Login</button>
+              <h4>Login</h4>
             </Link>
           )}
         </header>
