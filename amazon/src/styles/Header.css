@@ -1,0 +1,67 @@
+.header{
+    height: 60px;
+    width: 100%;
+    display : flex;
+    align-items: center;
+    background : black;
+    position : sticky;
+    top : 0;
+    z-index: 100;
+}
+.header_logo {
+    width :100px;
+    object-fit: contain;
+    /* 컨테이터 크기는 고정 (부모의 크기) 자식 이미지의 크기는 다양 -> 자식 이미지의 비율을 유지하며 작아지도록 함 */
+    margin : 0 20px;
+    margin-top: 10px;
+}
+.header_search{
+    display: flex;
+    flex : 1;
+    align-items: center;
+    border-radius: 20;
+}
+
+.header_searchInput{
+    height:12px;
+    padding : 10px;
+    border:none;
+    width : 100%;
+}
+.header_searchIcon{
+    background : #cd9042;
+    padding : 5px;
+    height : 15px;
+
+}
+.header_option {
+    display : flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right : 10px;
+    color : white;
+}
+
+.header_nav{
+    display : flex;
+    justify-content : space-evenly;
+    /* space-evently : 똑같이 떨어지는 거고 between은 전체 끝부분을  두고 가운데에 배치(넓게 배치)*/
+}
+
+.header_optionLineOne{
+    font-size : 10px;
+}
+.header_optionLineTwo{
+    font-size : 13px;
+    font-weight: 800;
+    margin-top:3px;
+}
+.header_optionBasket{
+    display : flex;
+    align-items: center;
+    color : white;
+}
+.header_optionLineTwoheader_basketCount {
+    margin-right : 10px;
+    margin-left : 10px;
+}
