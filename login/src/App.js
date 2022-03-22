@@ -4,14 +4,21 @@ import LoginForm from './components/LoginForm';
 import {BrowserRouter, Route, Routes, Link} from 'react-router-dom';
 import NotFound from './components/NotFound';
 import Main from './components/Main';
+import { signIn } from './auth';
 
 function App() {
   const adminUser = {
     id : "admin@admin.com",
     password : "admin123"
   }
-
   const [user, setUser] = useState({name : "", id:"", password:""});
+
+  // const [user, setUser] = useState(null);
+  // const authenticated = user != null;
+
+  // const login = ({email, password}) => setUser(signIn({email, password}));
+  // const logout = () => setUser(null);
+
   const [error, setError] = useState("");
 
   const Login = details => {
@@ -36,6 +43,7 @@ function App() {
 
     }
   }
+
 
   const Logout = () => {
     setUser({name:"", email:""});
