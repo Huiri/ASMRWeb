@@ -1,36 +1,49 @@
 import React, {useState} from 'react';
 import '../styles/Login.css';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {auth} from '../firebase'
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
 
 const Login = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const history = useNavigate();
+
+    const signOut = e => {
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // ...
+        })
+        .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+    });
+}
 
     const signIn = e => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-        console.log(userCredential.user);
-  })
-  .catch((error) => {
-    console.log(error.message);
-  });
+            history('/', {replace:true})
+    })
+        .catch((error) => {
+            alert(error.message);
+            console.warn(error.message);
+    });
     }
     const register = e => {
         e.preventDefault();
-        // auth.createUserWithEmailAndPassword(email, password)
-        // .then((auth) => {
-        //     console.log(auth);
-        // })
-        // .catch(error=>alert(error.message()))
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            console.log(userCredential);
+            if(userCredential){
+                history('/', {replace: true});
+            }
         })
         .catch((error) => {
-            console.log(error.message);
+            alert(error.message);
+            console.warn(error.message);
         });
     }
     
