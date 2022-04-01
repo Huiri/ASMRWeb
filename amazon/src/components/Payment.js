@@ -39,7 +39,8 @@ const Payment = () => {
                     <h3>결제</h3>
                 </div>
                 <div className="payment_details">
-                    
+                    <h3>value</h3>
+                    <button onClick={e => history('/payments')}> ㄱㅕㄹㅈㅔ</button>
                 </div>
             </div>
         </div>

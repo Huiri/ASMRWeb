@@ -8,9 +8,12 @@ import {useEffect} from 'react';
 import {auth} from './firebase'
 import {useStateValue} from './StateProvider';
 import Payment from './components/Payment';
-
+import Payments from './components/Payments';
 // const promise
 function App() {
+  document.cookie = "safeCookie1=foo; SameSite=Lax"; 
+  document.cookie = "safeCookie2=foo";  
+  document.cookie = "crossCookie=bar; SameSite=None; Secure";
   const[{}, dispatch] = useStateValue();
   useEffect(()=>{
     auth.onAuthStateChanged(authUser => {
@@ -37,6 +40,7 @@ function App() {
           <Route path="/checkout" element={<Checkout/>}></Route>
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/payment' element={<Payment/>}></Route>
+          <Route path='/payments' element={<Payments/>}></Route>
         </Routes>
     </BrowserRouter>
   );
