@@ -7,7 +7,6 @@ import {
     NotificationsOutlined,
     PeopleAltOutlined, Search
 } from "@material-ui/icons";
-// import SearchIcon from '@material-ui/icons/Search';
 import {Avatar, Button} from '@material-ui/core';
 
 const Navbar = () => {
